@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # starts everything
 echo "Starting systemd headlessly..."
-/lib/systemd/systemd &  # Start systemd in the background
-sleep 2  # Give systemd time to initialize
 dbus-daemon --system &
 sleep 2  # Give dbus time to initialize
+/lib/systemd/systemd &  # Start systemd in the background
+sleep 2  # Give systemd time to initialize
+
 systemctl daemon-reload
 echo "installing dependencies"
  ARCH=$(dpkg --print-architecture) && \
