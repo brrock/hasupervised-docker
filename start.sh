@@ -1,4 +1,4 @@
-#!/usr/env bash
+#!/usr/bin/env bash
 # starts everything
 echo "Starting systemd headlessly..."
 /lib/systemd/systemd &  # Start systemd in the background
