@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -y \
 # Install Docker via get.docker.com
 RUN curl -fsSL https://get.docker.com | bash
 # Copy start script
-COPY start.sh /usr/bin/start
+ADD start.sh /usr/bin/start
 RUN chmod +x /usr/bin/start
 
 # Volumes for systemd and home assistant
