@@ -10,6 +10,7 @@ The point is to have supervised feautures like add-ons in docker
   --cap-add=NET_ADMIN \
   --security-opt seccomp=unconfined \
   --cgroupns=host \
+  --privileged \
   -v /path/for/ha:/homeassistant \
   -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
   -v /var/run/docker.sock:/var/run/docker.sock \
@@ -22,6 +23,7 @@ The point is to have supervised feautures like add-ons in docker
   --cap-add=NET_ADMIN \
   --security-opt seccomp=unconfined \
   --cgroupns=host \
+  --privileged \
   -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -p 8123:8123 \
