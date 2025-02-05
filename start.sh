@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Starts everything
-
+set -e
 echo "Starting systemd headlessly..."
-/usr/bin/tini -- /sbin/init &  # Start systemd in the background
+exec /usr/bin/tini -s -- /sbin/init
 sleep 2  # Give systemd time to initialize
 
 echo "Starting D-Bus daemon..."

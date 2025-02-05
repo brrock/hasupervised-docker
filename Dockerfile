@@ -31,18 +31,21 @@ RUN apt-get update && apt-get install -y \
 
 # Install Docker via get.docker.com
 RUN curl -fsSL https://get.docker.com | bash
+
 # Copy start script
 COPY start.sh /usr/bin/start
 RUN chmod +x /usr/bin/start
 
-# Volumes for systemd and home assistant
-VOLUME ["/sys/fs/cgroup", "/homeassistant"]
-
 # Ensure systemd can start services
 RUN echo exit 0 > /usr/sbin/policy-rc.d
 
+# Volumes for systemd and Home Assistant
+VOLUME ["/sys/fs/cgroup", "/homeassistant"]
 # Expose Home Assistant default port
 EXPOSE 8123
 
-# Entrypoint to start script
-ENTRYPOINT ["/usr/bin/start"]
+# ENTRYPOINT runs systemd as PID 1
+ENTRYPOINT ["/usr/bin/tini", "--", "/sbin/init"]
+
+# CMD runs your startup script
+CMD ["/usr/bin/start"]
