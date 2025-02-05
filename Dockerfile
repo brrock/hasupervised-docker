@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y \
     systemd-sysv \
     udisks2 \
     wget \
+    tini \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Docker via get.docker.com
@@ -44,4 +45,4 @@ RUN echo exit 0 > /usr/sbin/policy-rc.d
 EXPOSE 8123
 
 # Entrypoint to start script
-ENTRYPOINT /usr/bin/start
+ENTRYPOINT ["/usr/bin/start"]
