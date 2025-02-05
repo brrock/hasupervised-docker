@@ -2,8 +2,7 @@
 # Starts everything
 set -e
 echo "Starting systemd headlessly..."
-exec /usr/bin/tini -s -- /sbin/init
-sleep 2  # Give systemd time to initialize
+sleep 60  # Give systemd time to initialize
 
 echo "Starting D-Bus daemon..."
 dbus-daemon --system &

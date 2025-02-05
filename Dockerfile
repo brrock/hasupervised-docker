@@ -44,8 +44,8 @@ VOLUME ["/sys/fs/cgroup", "/homeassistant"]
 # Expose Home Assistant default port
 EXPOSE 8123
 
-# ENTRYPOINT runs systemd as PID 1
-ENTRYPOINT ["/usr/bin/tini", "--", "/sbin/init"]
+# ENTRYPOINT runs tini to start systemd as PID 1
+ENTRYPOINT ["/usr/bin/tini", "--", "/lib/systemd/systemd", "--system", "--unit=multi-user.target"]
 
-# CMD runs your startup script
+# CMD runs the startup script
 CMD ["/usr/bin/start"]
